@@ -234,13 +234,6 @@ module Ruport::Data
     include Enumerable             
     extend FromCSV
 
-    include Ruport::Controller::Hooks
-    renders_as_table
-
-    def self.inherited(base) #:nodoc:
-      base.renders_as_table
-    end
-    
     # Creates a new table based on the supplied options.
     #
     # Valid options:
@@ -873,6 +866,14 @@ module Ruport::Data
     
     def feed_element(row)
        recordize(row)
+    end
+
+    def as(format, options={})
+      Ruport::Formatter::Table.render(format, options.merge(:data => self))
+    end
+
+    def save_as(file, options={})
+      Ruport::Formatter::Table.render_file(file, options.merge(:data => self))
     end
     
     private    

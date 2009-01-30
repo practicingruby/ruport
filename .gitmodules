@@ -1,0 +1,3 @@
+[submodule "vendor/fatty"]
+	path = vendor/fatty
+	url = git://github.com/sandal/fatty.git

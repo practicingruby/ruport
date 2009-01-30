@@ -44,13 +44,6 @@ module Ruport::Data
       super
     end
           
-    include Ruport::Controller::Hooks
-    renders_as_group
-
-    def self.inherited(base) #:nodoc:
-      base.renders_as_group
-    end
-
     def initialize_copy(from) #:nodoc:
       super
       @name = from.name
@@ -340,13 +333,6 @@ module Ruport::Data
 
     alias_method :sum, :sigma
 
-    include Ruport::Controller::Hooks
-    renders_as_grouping
-
-    def self.inherited(base) #:nodoc:
-      base.renders_as_grouping
-    end
-    
     # Create a copy of the Grouping. Groups will be copied as well.
     #
     # Example:

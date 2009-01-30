@@ -18,9 +18,7 @@ module Ruport::Data
   #
   class Record   
     
-    if RUBY_VERSION < "1.9"
-      private :id     
-    end
+    private :id     
 
     include Enumerable  
     
@@ -232,13 +230,6 @@ module Ruport::Data
     ####################### 
     # Internals / Helpers #
     #######################       
-
-    include Ruport::Controller::Hooks
-    renders_as_row
-
-    def self.inherited(base) #:nodoc:
-      base.renders_as_row
-    end
 
     # Provides a unique hash value. If a Record contains the same data and
     # attributes as another Record, they will hash to the same value, even if

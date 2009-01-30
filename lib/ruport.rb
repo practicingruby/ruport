@@ -8,23 +8,10 @@
 # your choice of the GNU General Public License or the Ruby License. 
 #
 # See LICENSE and COPYING for details
-#
  
-
-if RUBY_VERSION > "1.9"     
-  require "csv"   
-  unless defined? FCSV
-    class Object   
-      FCSV = CSV  
-      alias_method :FCSV, :CSV 
-    end   
-  end
-end
-
-
 module Ruport #:nodoc:#
   
-  VERSION = "1.7.0"     
+  VERSION = "1.9.99"     
  
   class FormatterError < RuntimeError #:nodoc:
   end
@@ -114,9 +101,8 @@ module Ruport #:nodoc:#
 end  
 
 require "enumerator"
-require "ruport/controller" 
 require "ruport/data" 
-require "ruport/formatter" 
+require "ruport/format"
 
 begin
   if Object.const_defined? :ActiveRecord
